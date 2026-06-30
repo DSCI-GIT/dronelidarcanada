@@ -1,5 +1,14 @@
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  const linkPage = link.getAttribute("href")?.split("?")[0];
+
+  if (linkPage === currentPage) {
+    link.setAttribute("aria-current", "page");
+  }
+});
 
 if (navToggle && navLinks) {
   navToggle.addEventListener("click", () => {
